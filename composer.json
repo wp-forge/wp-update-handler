@@ -1,6 +1,6 @@
 {
   "name": "wp-forge/wp-update-handler",
-  "description": "A WordPress package for updating plugins via a custom API.",
+  "description": "A WordPress package for updating custom plugins and themes based on an API response from a custom update server.",
   "license": "GPL-2.0-or-later",
   "authors": [
     {
