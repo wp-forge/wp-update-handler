@@ -1,0 +1,30 @@
+{
+  "name": "wp-forge/wp-update-handler",
+  "description": "A WordPress package for updating plugins via a custom API.",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Micah Wood",
+      "email": "micah@wpscholar.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "WP_Forge\\WPUpdateHandler\\": "includes/"
+    }
+  },
+  "require": {
+    "wp-forge/helpers": "^1.1"
+  },
+  "require-dev": {
+    "wpscholar/phpcs-standards-wpscholar": "^1.0"
+  },
+  "scripts": {
+    "lint": [
+      "vendor/bin/phpcs -s --standard=WPScholar ."
+    ],
+    "fix": [
+      "vendor/bin/phpcbf -s --standard=WPScholar ."
+    ]
+  }
+}
