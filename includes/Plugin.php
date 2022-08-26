@@ -161,6 +161,7 @@ class Plugin implements \ArrayAccess {
 	 *
 	 * @return bool
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetExists( $offset ) {
 		return array_key_exists( $offset, self::HEADERS ) || in_array( $offset, array( 'basename', 'file', 'slug' ), true );
 	}
@@ -172,6 +173,7 @@ class Plugin implements \ArrayAccess {
 	 *
 	 * @return string
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetGet( $offset ) {
 		if ( method_exists( $this, $offset ) ) {
 			return $this->{$offset}();
@@ -191,6 +193,7 @@ class Plugin implements \ArrayAccess {
 	 *
 	 * @throws \Exception If called.
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetSet( $offset, $value ) {
 		throw new \Exception( 'Setting plugin values is not allowed!' );
 	}
@@ -202,6 +205,7 @@ class Plugin implements \ArrayAccess {
 	 *
 	 * @throws \Exception If called.
 	 */
+	#[\ReturnTypeWillChange]
 	public function offsetUnset( $offset ) {
 		throw new \Exception( 'Unsetting plugin values is not allowed!' );
 	}
