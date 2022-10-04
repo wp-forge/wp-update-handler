@@ -154,7 +154,7 @@ class PluginUpdater {
 					$data = json_decode( $body, true );
 					if ( ! is_null( $data ) ) {
 						$payload = $this->mapData( $data );
-						set_transient( $cache_key, $payload, HOUR_IN_SECONDS * 6 );
+						set_transient( $cache_key, $payload, $this->cacheExpiration );
 					}
 				}
 			}
