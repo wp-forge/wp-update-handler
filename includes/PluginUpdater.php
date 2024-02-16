@@ -2,6 +2,9 @@
 
 namespace WP_Forge\WPUpdateHandler;
 
+use function WP_Forge\Helpers\dataGet;
+use function WP_Forge\Helpers\dataSet;
+
 /**
  * Class PluginUpdater.
  */
@@ -177,40 +180,40 @@ class PluginUpdater {
 
 		$author = ! empty( $author_uri ) ? "<a href=\"{$author_uri}\">{$author_name}</a>" : $author_name;
 
-		$description = data_get( $data, 'description', $this->plugin->description() );
+		$description = dataGet( $data, 'description', $this->plugin->description() );
 
 		$defaults = array(
 			'author'            => $author,
 			'author_name'       => $author_name,
 			'author_uri'        => $author_uri,
 			'description'       => $description,
-			'download_link'     => data_get( $data, 'download_link' ),
-			'homepage'          => data_get( $data, 'homepage', $this->plugin->uri() ),
+			'download_link'     => dataGet( $data, 'download_link' ),
+			'homepage'          => dataGet( $data, 'homepage', $this->plugin->uri() ),
 			'id'                => $this->plugin->basename(),
-			'last_updated'      => data_get( $data, 'last_updated' ),
+			'last_updated'      => dataGet( $data, 'last_updated' ),
 			'name'              => $this->plugin->name(),
 			'plugin'            => $this->plugin->basename(),
-			'requires'          => data_get( $data, 'requires', $this->plugin->requires_wp() ),
-			'requires_php'      => data_get( $data, 'requires_php', $this->plugin->requires_php() ),
+			'requires'          => dataGet( $data, 'requires', $this->plugin->requires_wp() ),
+			'requires_php'      => dataGet( $data, 'requires_php', $this->plugin->requires_php() ),
 			'sections'          => array(
 				'description' => $description,
 			),
 			'short_description' => $description,
 			'slug'              => $this->plugin->slug(),
-			'tested'            => data_get( $data, 'tested' ),
-			'version'           => data_get( $data, 'version' ),
+			'tested'            => dataGet( $data, 'tested' ),
+			'version'           => dataGet( $data, 'version' ),
 		);
 
 		$payload = $defaults;
 
 		// Map selected fields
 		foreach ( $this->dataMap as $key => $target ) {
-			data_set( $payload, $key, data_get( $data, $target ) );
+			dataSet( $payload, $key, dataGet( $data, $target ) );
 		}
 
 		// Override selected fields
 		foreach ( $this->dataOverrides as $key => $value ) {
-			data_set( $payload, $key, $value );
+			dataSet( $payload, $key, $value );
 		}
 
 		$payload['new_version'] = $payload['version'];

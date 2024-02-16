@@ -14,7 +14,7 @@
     }
   },
   "require": {
-    "wp-forge/helpers": "^1.1"
+    "wp-forge/helpers": "^2.0"
   },
   "require-dev": {
     "wpscholar/phpcs-standards-wpscholar": "^1.0"
@@ -26,5 +26,10 @@
     "fix": [
       "vendor/bin/phpcbf -s --standard=WPScholar ."
     ]
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
   }
 }

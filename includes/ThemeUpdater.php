@@ -2,6 +2,9 @@
 
 namespace WP_Forge\WPUpdateHandler;
 
+use function WP_Forge\Helpers\dataGet;
+use function WP_Forge\Helpers\dataSet;
+
 /**
  * Class ThemeUpdater.
  */
@@ -177,34 +180,34 @@ class ThemeUpdater {
 
 		$author = ! empty( $author_uri ) ? "<a href=\"{$author_uri}\">{$author_name}</a>" : $author_name;
 
-		$description = data_get( $data, 'description', $this->theme->get( 'Description' ) );
+		$description = dataGet( $data, 'description', $this->theme->get( 'Description' ) );
 
 		$defaults = array(
 			'author'        => $author,
 			'author_name'   => $author_name,
 			'author_uri'    => $author_uri,
 			'description'   => $description,
-			'download_link' => data_get( $data, 'download_link' ),
-			'homepage'      => data_get( $data, 'homepage', $this->theme->get( 'ThemeURI' ) ),
+			'download_link' => dataGet( $data, 'download_link' ),
+			'homepage'      => dataGet( $data, 'homepage', $this->theme->get( 'ThemeURI' ) ),
 			'name'          => $this->theme->get( 'Name' ),
 			'theme'         => $this->theme->get_stylesheet(),
-			'requires'      => data_get( $data, 'requires', $this->theme->get( 'RequiresWP' ) ),
-			'requires_php'  => data_get( $data, 'requires_php', $this->theme->get( 'RequiresPHP' ) ),
+			'requires'      => dataGet( $data, 'requires', $this->theme->get( 'RequiresWP' ) ),
+			'requires_php'  => dataGet( $data, 'requires_php', $this->theme->get( 'RequiresPHP' ) ),
 			'slug'          => $this->theme->get_stylesheet(),
-			'tested'        => data_get( $data, 'tested' ),
-			'version'       => data_get( $data, 'version' ),
+			'tested'        => dataGet( $data, 'tested' ),
+			'version'       => dataGet( $data, 'version' ),
 		);
 
 		$payload = $defaults;
 
 		// Map selected fields
 		foreach ( $this->dataMap as $key => $target ) {
-			data_set( $payload, $key, data_get( $data, $target ) );
+			dataSet( $payload, $key, dataGet( $data, $target ) );
 		}
 
 		// Override selected fields
 		foreach ( $this->dataOverrides as $key => $value ) {
-			data_set( $payload, $key, $value );
+			dataSet( $payload, $key, $value );
 		}
 
 		$payload['new_version'] = $payload['version'];
