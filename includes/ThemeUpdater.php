@@ -241,7 +241,5 @@ class ThemeUpdater {
 				return $transient;
 			}
 		);
-
 	}
-
 }

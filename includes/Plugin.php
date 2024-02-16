@@ -226,5 +226,4 @@ class Plugin implements \ArrayAccess {
 
 		return $values;
 	}
-
 }

@@ -269,7 +269,5 @@ class PluginUpdater {
 				return $transient;
 			}
 		);
-
 	}
-
 }
